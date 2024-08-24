@@ -17,8 +17,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      darkTheme: ThemeData.dark(useMaterial3: true),
-      themeMode: ThemeMode.dark,
       home: const CalculatorScreen(),
     );
   }

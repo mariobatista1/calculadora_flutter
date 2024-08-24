@@ -202,62 +202,48 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: const AssetImage('assets/images/bg-img.jpg'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.1),
-              BlendMode.dstATop,
-            ),
-          ),
-        ),
-        child: SafeArea(
-          bottom: true,
-          child: Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  reverse: true,
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    alignment: Alignment.bottomRight,
-                    child: AutoSizeText(
-                      '$number1$operator$number2'.isEmpty
-                          ? '0'
-                          : '$number1$operator$number2',
-                      textAlign: TextAlign.end,
-                      style: const TextStyle(
-                        fontSize: 80,
-                      ),
-                      maxLines: 1,
-                      maxFontSize: 80,
-                      minFontSize: 20,
+      body: SafeArea(
+        bottom: true,
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                reverse: true,
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  alignment: Alignment.bottomRight,
+                  child: AutoSizeText(
+                    '$number1$operator$number2'.isEmpty
+                        ? '0'
+                        : '$number1$operator$number2',
+                    textAlign: TextAlign.end,
+                    style: const TextStyle(
+                      fontSize: 80,
                     ),
+                    maxLines: 1,
+                    maxFontSize: 80,
+                    minFontSize: 20,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              Wrap(
-                children: Button.buttonValues
-                    .map(
-                      (value) => SizedBox(
-                        width: value == Button.n0
-                            ? screenSize.width / 2
-                            : (screenSize.width / 4),
-                        height: screenSize.width / 5,
-                        child: buttonValue(value),
-                      ),
-                    )
-                    .toList(),
-              )
-            ],
-          ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Wrap(
+              children: Button.buttonValues
+                  .map(
+                    (value) => SizedBox(
+                      width: value == Button.n0
+                          ? screenSize.width / 2
+                          : (screenSize.width / 4),
+                      height: screenSize.width / 5,
+                      child: buttonValue(value),
+                    ),
+                  )
+                  .toList(),
+            )
+          ],
         ),
       ),
     );
